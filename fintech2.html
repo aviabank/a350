@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Airbus A350 (€A350) — Aircraft Sales • Leasing • 5000+ Parts</title>
+    <link rel="icon" href="https://raw.githubusercontent.com/123tokens/b787/refs/heads/main/a350_logo.png" />
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: #0A0E27; color: #E0E6FF;
+            line-height: 1.6; padding-top: 80px; padding-bottom: 60px;
+        }
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+        header {
+            position: fixed; top: 0; left: 0; width: 100%;
+            background: rgba(10,14,39,0.92); backdrop-filter: blur(12px);
+            z-index: 100; border-bottom: 1px solid rgba(181,123,255,0.2);
+            padding: 10px 0;
+        }
+        .header-inner {
+            display: flex; align-items: center; justify-content: space-between;
+            flex-wrap: wrap; gap: 10px;
+        }
+        .logo { display: flex; align-items: center; gap: 8px; }
+        .logo img { height: 36px; width: auto; border-radius: 50%; }
+        .logo-text { font-size: 20px; font-weight: 700; color: #fff; }
+        nav { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+        nav a { color: #8A94C8; text-decoration: none; font-size: 12px; font-weight: 500; transition: 0.3s; }
+        nav a:hover { color: #B57BFF; }
+        nav a.active { color: #B57BFF; border-bottom: 2px solid #B57BFF; }
+        .btn-primary {
+            background: #B57BFF; color: #0A0E27; padding: 6px 18px;
+            border-radius: 30px; font-weight: 700; text-decoration: none;
+            transition: 0.3s; display: inline-block; font-size: 13px;
+        }
+        .btn-primary:hover { background: #C99BFF; transform: scale(1.02); }
+        .btn-secondary {
+            background: transparent; color: #B57BFF; padding: 6px 18px;
+            border-radius: 30px; font-weight: 600; text-decoration: none;
+            border: 1px solid #B57BFF; transition: 0.3s; display: inline-block;
+            font-size: 13px;
+        }
+        .btn-secondary:hover { background: #B57BFF; color: #0A0E27; }
+        section { padding: 30px 0; }
+        .section-header { text-align: center; margin-bottom: 30px; }
+        .section-tag {
+            display: inline-block; background: rgba(181,123,255,0.12);
+            color: #B57BFF; padding: 4px 16px; border-radius: 20px;
+            font-size: 12px; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .section-header h1 { font-size: 34px; font-weight: 700; margin: 8px 0; }
+        .section-header h1 .highlight { color: #B57BFF; }
+        .section-header p { color: #8A94C8; max-width: 600px; margin: 0 auto; }
+        .rwa-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px; margin-bottom: 24px;
+        }
+        .rwa-card {
+            background: rgba(26,30,65,0.4); border: 1px solid #1E2350;
+            border-radius: 16px; padding: 24px 22px; transition: 0.3s;
+        }
+        .rwa-card:hover { border-color: #B57BFF; transform: translateY(-4px); }
+        .rwa-card .rwa-icon { font-size: 38px; margin-bottom: 10px; }
+        .rwa-card h3 { color: #fff; font-size: 19px; margin-bottom: 6px; }
+        .rwa-card p { color: #8A94C8; font-size: 14px; }
+        .feature-badge {
+            display: inline-block; background: rgba(181,123,255,0.15);
+            color: #B57BFF; padding: 2px 12px; border-radius: 20px;
+            font-size: 11px; font-weight: 600; text-transform: uppercase;
+            margin-top: 8px; margin-right: 4px;
+        }
+        .image-block { max-width: 900px; margin: 30px auto; text-align: center; }
+        .image-block img {
+            max-width: 100%; border-radius: 20px;
+            border: 1px solid #1E2350;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+        .contract-box {
+            background: rgba(181,123,255,0.05); border: 1px solid rgba(181,123,255,0.15);
+            border-radius: 12px; padding: 14px 16px; margin: 20px 0;
+            text-align: center; font-size: 13px; color: #8A94C8; font-family: 'Courier New', monospace;
+        }
+        .contract-box .addr { color: #B57BFF; }
+        .contract-box .copy-btn { background: transparent; border: none; color: #5A649A; cursor: pointer; font-size: 13px; font-family: 'Segoe UI', sans-serif; }
+        .contract-box .copy-btn:hover { color: #B57BFF; }
+        .contract-box .solscan-link { color: #5A649A; text-decoration: none; font-size: 13px; font-family: 'Segoe UI', sans-serif; margin-left: 8px; }
+        .contract-box .solscan-link:hover { color: #fff; }
+        .counter-box {
+            text-align: center; padding: 16px;
+            background: rgba(181,123,255,0.05); border-radius: 12px;
+            margin: 20px 0; font-size: 14px; color: #8A94C8;
+            font-family: 'Courier New', monospace;
+        }
+        .counter-box .counter-visitors { color: #B57BFF; font-weight: 600; }
+        .counter-box .counter-holders { color: #2ECC40; font-weight: 600; }
+        .counter-box .counter-clients { color: #4A8CFF; font-weight: 600; }
+        .back-link { display: inline-block; margin-top: 16px; color: #B57BFF; text-decoration: none; font-weight: 500; }
+        .back-link:hover { text-decoration: underline; }
+        footer {
+            background: #060920; padding: 20px 0 16px; text-align: center;
+            border-top: 1px solid #1E2350; margin-top: 20px;
+        }
+        footer p { color: #3A406A; font-size: 13px; }
+        @media (max-width: 768px) {
+            .header-inner { flex-direction: column; align-items: stretch; }
+            nav { justify-content: center; gap: 6px; }
+            nav a { font-size: 10px; }
+            .section-header h1 { font-size: 26px; }
+            .contract-box { font-size: 11px; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container header-inner">
+        <div class="logo">
+            <img src="https://raw.githubusercontent.com/123tokens/b787/refs/heads/main/a350_logo.png" alt="Airbus A350" />
+            <span class="logo-text">AIRBUS A350 €A350</span>
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="fintech1.html">Use Cases</a>
+            <a href="fintech2.html" class="active">Leasing • Parts</a>
+            <a href="trade.html">Trade</a>
+            <a href="ecosystem.html">Ecosystem</a>
+            <a href="https://123tokens.github.io/aviatrust/">AviaTrust</a>
+        </nav>
+        <a href="buy.html" class="btn-primary">Buy €A350</a>
+    </div>
+</header>
+
+<section>
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">Aircraft Sales • Leasing • Parts</span>
+            <h1>Powerful <span class="highlight">Fintech Infrastructure</span></h1>
+            <p>€A350 is the gateway to aircraft sales, leasing, 5000+ parts, and global payment rails.</p>
+        </div>
+
+        <div class="image-block">
+            <img src="a350_fintech_diagram.png" alt="Airbus A350 Fintech Diagram" />
+        </div>
+
+        <div class="rwa-grid">
+            <div class="rwa-card">
+                <div class="rwa-icon">💺</div>
+                <h3>Aircraft Sales</h3>
+                <p>Tokenized aircraft sales — buy, sell, and trade Airbus A350 rights on Solana. New list price ~$317M, used ~$150-220M. Delivery flight tracking, escrow, and title transfer on-chain.</p>
+                <span class="feature-badge">New $317M</span>
+                <span class="feature-badge">Used $150M+</span>
+                <span class="feature-badge">Escrow</span>
+            </div>
+
+            <div class="rwa-card">
+                <div class="rwa-icon">✈️</div>
+                <h3>Aircraft Leasing</h3>
+                <p>€A350 is the unit of account for A350 leasing rights. ~700 A350s in service with airlines worldwide. Lessors hold, airlines lease, €A350 tracks the flow.</p>
+                <span class="feature-badge">~700 in service</span>
+                <span class="feature-badge">Leasing</span>
+            </div>
+
+            <div class="rwa-card">
+                <div class="rwa-icon">🔧</div>
+                <h3>5000+ Aircraft Parts</h3>
+                <p>The A350's Trent XWB engines and composite airframe create a global parts pool. €A350 represents claims on 5000+ components: engines, landing gear, avionics, interiors, AOG parts.</p>
+                <span class="feature-badge">Trent XWB 2000+</span>
+                <span class="feature-badge">Composite 1500+</span>
+                <span class="feature-badge">Landing 400+</span>
+                <span class="feature-badge">AOG</span>
+            </div>
+
+            <div class="rwa-card">
+                <div class="rwa-icon">📋</div>
+                <h3>Service History</h3>
+                <p>The A350's composite structure requires unique maintenance cycles. €A350 can carry service history — a tokenized logbook for each airframe. C-check, D-check records on-chain.</p>
+                <span class="feature-badge">Logbook</span>
+                <span class="feature-badge">C/D-check</span>
+            </div>
+
+            <div class="rwa-card">
+                <div class="rwa-icon">🗺️</div>
+                <h3>Route Economics</h3>
+                <p>Long-haul routes opened by the A350-1000 and A350F. Each route is an economic unit. €A350 tracks the value generated by point-to-point ultra-long-haul flying.</p>
+                <span class="feature-badge">A350-1000</span>
+                <span class="feature-badge">A350F</span>
+            </div>
+
+            <div class="rwa-card">
+                <div class="rwa-icon">💳</div>
+                <h3>Global Payment Rails</h3>
+                <p>SWIFT, SEPA, POS, CIPS, Fedwire, CHIPS, BUNA, UPI, PIX, NPP — €A350 connects them all for aircraft, parts, and leasing settlement.</p>
+                <span class="feature-badge">SWIFT</span>
+                <span class="feature-badge">SEPA</span>
+                <span class="feature-badge">UPI</span>
+                <span class="feature-badge">PIX</span>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-bottom: 16px;">
+            <a href="fintech1.html" class="btn-secondary">← Back to Use Cases</a>
+        </div>
+
+        <div class="counter-box">
+            ✈️ <span class="counter-visitors">1,601</span> orders
+            &nbsp;·&nbsp;
+            📦 <span class="counter-holders">731</span> delivered
+            &nbsp;·&nbsp;
+            🔧 <span class="counter-clients">5000+</span> parts
+        </div>
+
+        <div class="contract-box">
+            📜 Contract: <span class="addr">BZ97n4QCfbnMTBy4yEycdkDr4tsfSrYev5KDDwZ4qJrn</span>
+            <button onclick="navigator.clipboard.writeText('BZ97n4QCfbnMTBy4yEycdkDr4tsfSrYev5KDDwZ4qJrn')" class="copy-btn">📋 Copy</button>
+            <a href="https://solscan.io/token/BZ97n4QCfbnMTBy4yEycdkDr4tsfSrYev5KDDwZ4qJrn" target="_blank" class="solscan-link">🔍 Solscan</a>
+        </div>
+
+        <a href="index.html" class="back-link">← Back to Airbus A350 Home</a>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <p>© 2026 AviaTrust. Built on Solana. | Contract: BZ97n4QCfbnMTBy4yEycdkDr4tsfSrYev5KDDwZ4qJrn</p>
+    </div>
+</footer>
+
+<script src="counter.js"></script>
+
+</body>
+</html>
